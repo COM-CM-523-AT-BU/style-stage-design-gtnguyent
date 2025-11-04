@@ -50,10 +50,10 @@ THEME: deep dark blue, neons, electric cyan, lines
 
 :root {
   --color-bg-dark: #0A111F; /* dark blue/black */
-    --color-tron-cyan: #00F0FF; /* neon */
-    --color-subtle-trace: #004A50; /* outlines */
-    --color-text-subtle: #99FFFF; /* light cyan for body text */
-    --font-sans: 'Inter', sans-serif;
+  --color-tron-cyan: #00F0FF; /* neon */
+  --color-subtle-trace: #004A50; /* outlines */
+  --color-text-subtle: #99FFFF; /* light cyan for body text */
+  --font-sans: 'Inter', sans-serif;
 
   --glow-effect-strong: 0 0 15px var(--color-tron-cyan), 0 0 30px rgba(0, 240, 255, 0.5);
   --glow-effect-subtle: 0 0 8px var(--color-subtle-trace);
@@ -83,7 +83,7 @@ body {
         "profile"
         "styles"
         "footer";
-    overflow: hidden; /* Prevent background pattern scrollbar */
+    overflow: hidden; 
 }
 
 /* animation */
@@ -100,6 +100,7 @@ body {
     50% {
         text-shadow: 0 0 5px var(--color-tron-cyan), 0 0 10px rgba(0, 240, 255, 0.2);
         opacity: 0.85;
+    }
 }
 
 /* background grid pattern */
@@ -129,6 +130,7 @@ body::before {
     opacity: 0.3; 
     z-index: -1;
     pointer-events: none;
+
     animation: data-flow 45s linear infinite;
 }
 
@@ -176,6 +178,25 @@ h2 {
     border-bottom: 1px solid var(--color-subtle-trace);
     padding-bottom: 0.5rem;
     margin-top: 2.5rem;
+}
+
+#styles h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    letter-spacing: 0.05em; 
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+
+@media (min-width: 800px) {
+    #styles h2 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem); 
+        letter-spacing: 0.1em; 
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
 }
 
 p, li, dt, dd {
