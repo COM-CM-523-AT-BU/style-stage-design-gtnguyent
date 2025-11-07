@@ -437,6 +437,81 @@ dd {
     padding-left: 1rem;
 }
 
+/* CSS list */
+
+#about section:nth-of-type(2) ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(189px, 1fr));
+    gap:1rem;
+    margin-top: 2rem;
+    border: 1px solid var(--color-subtle-trace);
+    box-shadow: var(--glow-effect-subtle);
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+}
+
+#about section:nth-of-type(2) ul li {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    background-color: rgba(0, 240, 255, 0.05);
+    border-left: 3px solid var(--color-tron-cyan);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+     counter-increment: property-index;
+    position: relative;
+    overflow: hidden;
+}
+
+#about section:nth-of-type(2) ul li::before {
+    content: "[" counter(property-index) "] ";
+    color: var(--color-tron-orange);
+    font-weight: 700;
+    margin-right: 0.5rem;
+    text-shadow: 0 0 5px var(--color-tron-orange);
+}
+
+#about section:nth-of-type(2) ul li:hover,
+#about section:nth-of-type(2) ul li:focus-within {
+    border-left-color: var(--color-tron-orange);
+    background-color: rgba(255, 140, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-effect-orange);
+}
+
+#about section:nth-of-type(2) ul li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#about section:nth-of-type(2) ul li:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 1050px) {
+    #about section:nth-of-type(2) ul {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* profile */
 
 .profile ul {
@@ -451,6 +526,9 @@ dd {
     margin-bottom: 1rem;
     color: var(--color-tron-cyan);
     text-shadow: 0 0 5px rgba(0, 240, 255, 0.4);
+
+    white-space: normal;
+    line-height: 1.1;
 }
 
 #styles .features {
@@ -579,7 +657,7 @@ dd {
 
 /* layout shift */
 
-@media (min-width: 800px) {
+@media (min-width: 1050px) {
     body {
         grid-template-columns: minmax(180px, 1fr) minmax(600px, 3fr) minmax(220px, 1fr);
         grid-template-areas:
@@ -587,8 +665,8 @@ dd {
             "nav main profile"
             "nav main styles"
             "footer footer footer";
-        gap: 3rem 2rem;
-        padding: 4rem 0;
+        gap: 2rem 0.2rem;
+        padding: 4rem 2rem;
     }
 
     nav {
